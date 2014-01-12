@@ -1,7 +1,7 @@
 <?php
 
 class Crossgate9_Output_Adapter {
-    const ADAPTER_CSV = 'CSV';
+    const ADAPTER_CSV = 'Csv';
     const ADAPTER_PHPEXCEL = 'PHPEXCEL';
 
     public static function factory($_adapter) {
