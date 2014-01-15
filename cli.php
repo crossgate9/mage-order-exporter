@@ -79,4 +79,7 @@ foreach($_filters as $_filter) {
 $_filename = Crossgate9_Utility_File::generateFilename('./tmp/', 8, '.csv');
 $_output = new Crossgate9_Output_Adapter_CSV();
 $_output->setFilename($_filename);
+include 'template/' . $_type . '.php';
 $_output->save();
+
+echo 'Filename: ' . $_filename . "\n";

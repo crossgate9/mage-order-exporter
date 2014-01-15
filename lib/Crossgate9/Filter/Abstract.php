@@ -22,6 +22,11 @@ abstract class Crossgate9_Filter_Abstract {
         return $_collection;
     }
 
+    public function count() {
+        $_collection = $this->getCollection();
+        return count($_collection);
+    }
+
     public function walk($_func, $_args) {
         $_collection = $this->_collection;
         foreach ($this->_conditions as $_field => $_conditions) {
