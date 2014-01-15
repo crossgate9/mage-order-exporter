@@ -10,4 +10,14 @@ class Crossgate9_Utility {
         }
         return $_res;
     }
+
+    public static function randomString($_length) {
+        $_alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $_str = array();
+        for ($i = 0; $i < 8; $i++) {
+            $_n = rand(0, strlen($_alphabet)-1);
+            $_str[$i] = $_alphabet[$_n];
+        }
+        return implode($_str);
+    }
 }

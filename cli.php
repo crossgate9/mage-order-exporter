@@ -67,3 +67,16 @@ if (isset($_store) !== false) {
 }
 
 $_type = $getopt->getOption('type');
+
+// get orders
+$_order_collection = Mage::getResourceModel('sales/order_collection');
+$_order_filter = new Crossgate9_Filter_Order();
+$_order_filter->setCollection($_order_collection);
+foreach($_filters as $_filter) {
+    $_order_filter->addCondition($_filter['field'], $_filter['condition']);
+}
+
+$_filename = Crossgate9_Utility_File::generateFilename('./tmp/', 8, '.csv');
+$_output = new Crossgate9_Output_Adapter_CSV();
+$_output->setFilename($_filename);
+$_output->save();
