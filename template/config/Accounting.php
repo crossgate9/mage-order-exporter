@@ -4,10 +4,9 @@ $_columns = array(
 
     // Increment Id
     array('class'=>'Crossgate9_Order_Increment', 'label'=>'OrderID', 'options'=>array('col-span'=>1)),
-
-    // array('type'=>'order', 'name'=>'Status', 'label'=>'Status', 'options'=>array('col-span'=>1)),
-    // array('type'=>'order', 'name'=>'Createdate', 'label'=>'Purchased on Date', 'options'=>array('col-span'=>1)),
-    // array('type'=>'order', 'name'=>'Time', 'label'=>'Order Time', 'options'=>array('col-span'=>1, 'format'=>'H:i:s')),
+    array('class'=>'Crossgate9_Order_Status', 'label'=>'Status', 'options'=>array('col-span'=>1)),
+    array('class'=>'Crossgate9_Order_Createdate', 'label'=>'Purchased on Date', 'options'=>array('col-span'=>1)),
+    array('class'=>'Crossgate9_Order_Createtime', 'label'=>'Order Time', 'options'=>array('col-span'=>1, 'format'=>'H:i:s')),
     // array('type'=>'order', 'name'=>'PaymentMethod', 'label'=>'Pay From', 'options'=>array('col-span'=>1)),
     // array('type'=>'order', 'name'=>'TransactionId', 'label'=>'Transaction ID', 'options' => array('col-span'=>1,'format'=>'string')),
     // array('type'=>'order', 'name'=>'Currency', 'label'=>'Currency', 'options'=>array('col-span'=>1)),
