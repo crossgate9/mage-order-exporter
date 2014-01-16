@@ -13,23 +13,25 @@ $_columns = array(
     // array('type'=>'order', 'name'=>'Courier', 'label'=>'Courier', 'options'=>array('col-span'=>1,'full-name'=>true)),
 
     // // Shipping Info
-    // array('type'=>'order', 'name'=>'CustomerName', 'label'=>'Contact Name (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
-    // array('type'=>'order', 'name'=>'Address', 'label'=>array('Address Line 1 (Shipping)', 'Address Line 2'), 'options'=>array('col-span'=>2,'type'=>'shipping')),
-    // array('type'=>'order', 'name'=>'City', 'label'=>'City (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
-    // array('type'=>'order', 'name'=>'State', 'label'=>'State (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
-    // array('type'=>'order', 'name'=>'Zip', 'label'=>'Zip (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
-    // array('type'=>'order', 'name'=>'Country', 'label'=>'Country (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
-    // array('type'=>'order', 'name'=>'Phone', 'label'=>'Telephone (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping','format'=>'string')),
-    // array('type'=>'order', 'name'=>'Email', 'label'=>'Email (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
+    array('class'=>'Crossgate9_Order_Address_CustomerName', 'label'=>'Contact Name (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
+    array('class'=>'Crossgate9_Order_Address_Line', 'label'=>array('Address Line 1 (Shipping)', 'Address Line 2'), 'options'=>array('col-span'=>2,'type'=>'shipping')),
+    array('class'=>'Crossgate9_Order_Address_City', 'label'=>'City (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
+    array('class'=>'Crossgate9_Order_Address_State', 'label'=>'State (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
+    array('class'=>'Crossgate9_Order_Address_Zip', 'name'=>'Zip', 'label'=>'Zip (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
+    array('class'=>'Crossgate9_Order_Address_Country', 'label'=>'Country (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
+    array('class'=>'Crossgate9_Order_Address_Phone', 'label'=>'Telephone (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping','format'=>'string')),
+    array('class'=>'Crossgate9_Order_Address_Email', 'label'=>'Email (Shipping)', 'options'=>array('col-span'=>1,'type'=>'shipping')),
+
     // // Billing Info
-    // array('type'=>'order', 'name'=>'CustomerName', 'label'=>'Contact Name (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
-    // array('type'=>'order', 'name'=>'Address', 'label'=>array('Address Line 1 (Billing)', 'Address Line 2'), 'options'=>array('col-span'=>2,'type'=>'billing')),
-    // array('type'=>'order', 'name'=>'City', 'label'=>'City (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
-    // array('type'=>'order', 'name'=>'State', 'label'=>'State (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
-    // array('type'=>'order', 'name'=>'Zip', 'label'=>'Zip (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
-    // array('type'=>'order', 'name'=>'Country', 'label'=>'Country (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
-    // array('type'=>'order', 'name'=>'Phone', 'label'=>'Telephone (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing','format'=>'string')),
-    // array('type'=>'order', 'name'=>'Email', 'label'=>'Email (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
+    array('class'=>'Crossgate9_Order_Address_CustomerName', 'label'=>'Contact Name (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
+    array('class'=>'Crossgate9_Order_Address_Line', 'label'=>array('Address Line 1 (Billing)', 'Address Line 2'), 'options'=>array('col-span'=>2,'type'=>'billing')),
+    array('class'=>'Crossgate9_Order_Address_City', 'label'=>'City (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
+    array('class'=>'Crossgate9_Order_Address_State', 'label'=>'State (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
+    array('class'=>'Crossgate9_Order_Address_Zip', 'label'=>'Zip (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
+    array('class'=>'Crossgate9_Order_Address_Country', 'label'=>'Country (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
+    array('class'=>'Crossgate9_Order_Address_Phone', 'label'=>'Telephone (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing','format'=>'string')),
+    array('class'=>'Crossgate9_Order_Address_Email', 'label'=>'Email (Billing)', 'options'=>array('col-span'=>1,'type'=>'billing')),
+
     // // Item
     // array('type'=>'order', 'name'=>'Item', 'label'=>array('SKU', 'Description', 'EAN', 'Season', 'Season Number', 'Year', 'Quantity', 'Price (Ex. VAT)', 'VAT', 'Price (Incl. VAT)', 'Refunded'), 'options'=>array('col-span'=>9, 'delivery_fee'=>true)),
     
