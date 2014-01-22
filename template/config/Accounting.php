@@ -7,9 +7,10 @@ $_columns = array(
     array('class'=>'Crossgate9_Order_Status', 'label'=>'Status', 'options'=>array('col-span'=>1)),
     array('class'=>'Crossgate9_Order_Createdate', 'label'=>'Purchased on Date', 'options'=>array('col-span'=>1)),
     array('class'=>'Crossgate9_Order_Createtime', 'label'=>'Order Time', 'options'=>array('col-span'=>1, 'format'=>'H:i:s')),
-    // array('type'=>'order', 'name'=>'PaymentMethod', 'label'=>'Pay From', 'options'=>array('col-span'=>1)),
-    // array('type'=>'order', 'name'=>'TransactionId', 'label'=>'Transaction ID', 'options' => array('col-span'=>1,'format'=>'string')),
-    // array('type'=>'order', 'name'=>'Currency', 'label'=>'Currency', 'options'=>array('col-span'=>1)),
+
+    array('class'=>'Crossgate9_Order_Payment_Method', 'label'=>'Pay From', 'options'=>array('col-span'=>1)),
+    array('class'=>'Crossgate9_Order_Payment_Transaction', 'label'=>'Transaction ID', 'options' => array('col-span'=>1,'format'=>'string')),
+    array('class'=>'Crossgate9_Order_Currency', 'label'=>'Currency', 'options'=>array('col-span'=>1)),
     // array('type'=>'order', 'name'=>'Courier', 'label'=>'Courier', 'options'=>array('col-span'=>1,'full-name'=>true)),
 
     // // Shipping Info

@@ -76,10 +76,10 @@ foreach($_filters as $_filter) {
     $_order_filter->addCondition($_filter['field'], $_filter['condition']);
 }
 
+echo "Total Record Number: " . $_order_filter->count() . "\n";
 $_filename = Crossgate9_Utility_File::generateFilename('./tmp/', 8, '.csv');
 $_output = new Crossgate9_Output_Adapter_CSV();
 $_output->setFilename($_filename);
 include 'template/' . $_type . '.php';
 $_output->save();
-
 echo 'Filename: ' . $_filename . "\n";
