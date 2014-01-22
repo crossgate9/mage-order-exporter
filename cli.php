@@ -19,12 +19,19 @@ use Ulrichsg\Getopt;
 $getopt = new Getopt(array(
     array(null, 'start-date', Getopt::OPTIONAL_ARGUMENT, 'Start Date: yyyy-mm-dd'),
     array(null, 'end-date', Getopt::OPTIONAL_ARGUMENT, 'End Date: yyyy-mm-dd'),
-    array(null, 'type', Getopt::REQUIRED_ARGUMENT, 'Type: sales-summary'),
+    array(null, 'type', Getopt::REQUIRED_ARGUMENT, 'Type: sales-summary (REQUIRED)'),
     array(null, 'status', Getopt::OPTIONAL_ARGUMENT, 'Status: ["complete"] (NOTICE: lower case)'),
     array(null, 'store', Getopt::OPTIONAL_ARGUMENT, 'Store: [1,2] (The number is store view id)'),
 ));
 
 $getopt->parse();
+
+// parse the required arguments
+$_type = $getopt->getOption('type');
+if (! isset($_type)) {
+    $getopt->showHelp();
+    die();
+}
 
 $_date = new DateTime();
 
@@ -65,8 +72,6 @@ if (isset($_store) !== false) {
         array('field' => 'store_id', 'condition' => array('in', $_store))
     );
 }
-
-$_type = $getopt->getOption('type');
 
 // get orders
 $_order_collection = Mage::getResourceModel('sales/order_collection');
