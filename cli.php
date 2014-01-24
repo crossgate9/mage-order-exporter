@@ -22,6 +22,7 @@ $getopt = new Getopt(array(
     array(null, 'type', Getopt::REQUIRED_ARGUMENT, 'Type: sales-summary (REQUIRED)'),
     array(null, 'status', Getopt::OPTIONAL_ARGUMENT, 'Status: ["complete"] (NOTICE: lower case)'),
     array(null, 'store', Getopt::OPTIONAL_ARGUMENT, 'Store: [1,2] (The number is store view id)'),
+    array(null, 'html-output', Getopt::OPTIONAL_ARGUMENT, 'HTML Output: true/ false. (Output the log with HTML tag)')
 ));
 
 $getopt->parse();
@@ -73,6 +74,9 @@ if (isset($_store) !== false) {
     );
 }
 
+// html output
+$_is_html_format = $getopt->getOption('html-output') === 'true';
+
 // get orders
 $_order_collection = Mage::getResourceModel('sales/order_collection');
 $_order_filter = new Crossgate9_Filter_Order();
@@ -81,10 +85,20 @@ foreach($_filters as $_filter) {
     $_order_filter->addCondition($_filter['field'], $_filter['condition']);
 }
 
-echo "Total Record Number: " . $_order_filter->count() . "\n";
+if ($_is_html_format) {
+    echo "<p>Total Record Number: " . $_order_filter->count() . "</p>":
+} else {
+    echo "Total Record Number: " . $_order_filter->count() . "\n";
+}
+
 $_filename = Crossgate9_Utility_File::generateFilename('./tmp/', 8, '.csv');
 $_output = new Crossgate9_Output_Adapter_CSV();
 $_output->setFilename($_filename);
 include 'template/' . $_type . '.php';
 $_output->save();
-echo 'Filename: ' . $_filename . "\n";
+
+if ($_is_html_format) {
+    echo '<p><a href="'.$_filename.'">Download</a></p>';
+} else {
+    echo 'Filename: ' . $_filename . "\n";
+}
