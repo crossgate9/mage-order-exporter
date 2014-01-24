@@ -20,4 +20,16 @@ class Crossgate9_Utility {
         }
         return implode($_str);
     }
+
+    public static function isRunning($_pid) {
+        try {
+            $_result = shell_exec(sprintf("ps %s", $_pid));
+            if (count(preg_split("/\n/", $_result)) > 2) {
+                return true;
+            }
+        } catch(Exception $e) {
+
+        }
+        return false;
+    }
 }
