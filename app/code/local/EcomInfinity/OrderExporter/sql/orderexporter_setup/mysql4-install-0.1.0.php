@@ -9,7 +9,7 @@ $installer->run("
 -- DROP TABLE IF EXISTS {$this->getTable('ei_oe_task')};
 CREATE TABLE {$this->getTable('ei_oe_task')} (
   `entity_id` int(11) unsigned NOT NULL auto_increment,
-  `cmd` varchar(255) NOT NULL default '',
+  `cmd` text NOT NULL default '',
   `status` smallint(6) NOT NULL default '0',
   `pid` varchar(6) NOT NULL default '',
   `log` text NOT NULL default '',
