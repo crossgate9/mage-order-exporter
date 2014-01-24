@@ -69,4 +69,13 @@
             </orderexporter>
         </helpers>
     </global>
+
+    <default>
+        <ei_oe>
+            <general>
+                <sentmail>0</sentmail>
+                <maxthread>0</maxthread>
+            </general>
+        </ei_oe>
+    </default>
 </config>
