@@ -39,13 +39,31 @@ foreach ($_tasks as $_task) {
                 $_task->setData('pid', $_pid);        
             }
 
-            if (Crossgate9_Utility::isRunning($_pid) === false) {
-                $_task->setData('status', EcomInfinity_OrderExporter_Model_Task::STATUS_FINISHED);
-            } 
-
             $_outputfile = sprintf('task/output.%s', $_id);
             $_outputfile = file_get_contents($_outputfile);
             $_task->setData('log', $_outputfile);
+
+            if (Crossgate9_Utility::isRunning($_pid) === false) {
+                if (Mage::helper('orderexporter')->isSentMail()) {
+                    $_receipts = explode(',', Mage::helper('orderexporter')->mailReceipt());
+                    $_from_email = Mage::helper('orderexporter')->fromEmail();
+                    $_from_name = Mage::helper('orderexporter')->fromName();
+                    foreach ($_receipts as $_mail) {
+                        $_mail = trim($_mail);
+                        Mage::getModel('core/email')
+                            ->setFromEmail($_from_email)
+                            ->setFromName($_from_name)
+                            ->setToEmail($_mail)
+                            ->setType('html')
+                            ->setBody($_outputfile)
+                            ->setSubject('EcomInfifity Order Exporter')
+                            ->send();
+                    }
+                }
+
+                $_task->setData('status', EcomInfinity_OrderExporter_Model_Task::STATUS_FINISHED);
+            } 
+
             $_task->save();
 
             break;

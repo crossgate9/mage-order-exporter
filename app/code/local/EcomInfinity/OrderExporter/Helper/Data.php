@@ -26,4 +26,20 @@ class EcomInfinity_OrderExporter_Helper_Data extends Mage_Core_Helper_Abstract {
 
         return ($_is_array) ? $_result : json_encode($_result);
     }
+
+    public function isSentMail() {
+        return Mage::getStoreConfig('ei_oe/general/sentmail') === '1';
+    }
+
+    public function mailReceipt() {
+        return Mage::getStoreConfig('ei_oe/general/email');
+    }
+
+    public function fromEmail() {
+        return Mage::getStoreConfig('ei_oe/general/fromemail');
+    }
+
+    public function fromName() {
+        return Mage::getStoreConfig('ei_oe/general/fromname');
+    }
 }
