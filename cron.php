@@ -13,22 +13,34 @@ require_once './lib/Autoload.php';
 
 $_tasks = Mage::getModel('orderexporter/task')->getCollection()->getItems();
 
+$_max_thread = Mage::helper('orderexporter')->maxThread();
+$_run_quota = 100;
+if ($_max_thread !== '0') {
+    $_running_tasks = Mage::getModel('orderexporter/task')
+                    ->getCollection()
+                    ->addFieldToFilter('status', EcomInfinity_OrderExporter_Model_Task::STATUS_RUNNING);
+    $_run_quota = $_max_thread - $_running_tasks->count();
+}
+
+
 foreach ($_tasks as $_task) {
     $_status = $_task->getData('status');
     switch ($_status) {
         case EcomInfinity_OrderExporter_Model_Task::STATUS_NOT_START:
-            $_id = $_task->getData('entity_id');
-            $_cmd = $_task->getData('cmd');
+            if ($_run_quota > 0) {
+                $_id = $_task->getData('entity_id');
+                $_cmd = $_task->getData('cmd');
 
-            $_exec = "%s > %s 2>&1 & echo $! > %s";
-            $_outputfile = sprintf('task/output.%s', $_id);
-            $_pidfile = sprintf('task/pid.%s', $_id);
+                $_exec = "%s > %s 2>&1 & echo $! > %s";
+                $_outputfile = sprintf('task/output.%s', $_id);
+                $_pidfile = sprintf('task/pid.%s', $_id);
 
-            exec(sprintf($_exec, $_cmd, $_outputfile, $_pidfile));
+                exec(sprintf($_exec, $_cmd, $_outputfile, $_pidfile));
 
-            $_task->setData('status', EcomInfinity_OrderExporter_Model_Task::STATUS_RUNNING);
-            $_task->save();
-
+                $_task->setData('status', EcomInfinity_OrderExporter_Model_Task::STATUS_RUNNING);
+                $_task->save();
+                $_run_quota --;
+            }
             break;
         case EcomInfinity_OrderExporter_Model_Task::STATUS_RUNNING:
             $_id = $_task->getData('entity_id');

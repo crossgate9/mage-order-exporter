@@ -46,4 +46,8 @@ class EcomInfinity_OrderExporter_Helper_Data extends Mage_Core_Helper_Abstract {
     public function dashboardNumber() {
         return Mage::getStoreConfig('ei_oe/dashboard/number');
     }
+
+    public function maxThread() {
+        return Mage::getStoreConfig('ei_oe/general/maxthread');
+    }
 }
