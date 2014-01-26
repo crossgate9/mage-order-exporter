@@ -17,7 +17,7 @@ $_helper = Mage::helper('orderexporter');
 
 <html>
     <head>
-        <title>RepeatCashmere - EcomInfinity Order Exporter Dashboard</title>
+        <title>EcomInfinity Order Exporter Dashboard</title>
         <link rel="stylesheet" href="styles/status.css">
     </head>
     <body>
