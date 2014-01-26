@@ -11,8 +11,12 @@ date_default_timezone_set('Asia/Hong_Kong');
 require_once './vendor/autoload.php';
 require_once './lib/Autoload.php';
 
-$_tasks = Mage::getModel('orderexporter/task')->getCollection()->getItems();
+$_tasks = Mage::getModel('orderexporter/task')
+            ->getCollection()
+            ->setOrder('entity_id', 'DESC')
+            ->getItems();
 $_helper = Mage::helper('orderexporter');
+$_number = $_helper->dashboardNumber();
 ?>
 
 <html>
@@ -42,7 +46,10 @@ $_helper = Mage::helper('orderexporter');
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $_count = 0; ?>
                         <?php foreach ($_tasks as $_task): ?>
+                        <?php $_count ++; ?>
+                        <?php if ($_count > $_number) break; ?>
                         <tr>
                             <td><?php echo $_task->getData('entity_id'); ?></td>
                             <td style="width:350px;"><?php echo $_helper->parseCmd($_task->getData('cmd')); ?></td>

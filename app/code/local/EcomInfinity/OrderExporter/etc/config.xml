@@ -73,9 +73,14 @@
     <default>
         <ei_oe>
             <general>
-                <sentmail>0</sentmail>
                 <maxthread>0</maxthread>
             </general>
+            <dashboard>
+                <number>10</number>
+            </dashboard>
+            <mail>
+                <sentmail>0</sentmail>
+            </mail>
         </ei_oe>
     </default>
 </config>

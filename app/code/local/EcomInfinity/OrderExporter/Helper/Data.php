@@ -28,18 +28,22 @@ class EcomInfinity_OrderExporter_Helper_Data extends Mage_Core_Helper_Abstract {
     }
 
     public function isSentMail() {
-        return Mage::getStoreConfig('ei_oe/general/sentmail') === '1';
+        return Mage::getStoreConfig('ei_oe/mail/sentmail') === '1';
     }
 
     public function mailReceipt() {
-        return Mage::getStoreConfig('ei_oe/general/email');
+        return Mage::getStoreConfig('ei_oe/mail/email');
     }
 
     public function fromEmail() {
-        return Mage::getStoreConfig('ei_oe/general/fromemail');
+        return Mage::getStoreConfig('ei_oe/mail/fromemail');
     }
 
     public function fromName() {
-        return Mage::getStoreConfig('ei_oe/general/fromname');
+        return Mage::getStoreConfig('ei_oe/mail/fromname');
+    }
+
+    public function dashboardNumber() {
+        return Mage::getStoreConfig('ei_oe/dashboard/number');
     }
 }
