@@ -41,7 +41,7 @@ $_number = $_helper->dashboardNumber();
                             <th>ID</th>
                             <th>Command</th>
                             <th>Status</th>
-                            <th>PID</th>
+                            <!-- <th>PID</th> -->
                             <th>Log</th>
                         </tr>
                     </thead>
@@ -52,9 +52,14 @@ $_number = $_helper->dashboardNumber();
                         <?php if ($_count > $_number) break; ?>
                         <tr>
                             <td><?php echo $_task->getData('entity_id'); ?></td>
-                            <td style="width:350px;"><?php echo $_helper->parseCmd($_task->getData('cmd')); ?></td>
+                            <td style="width:350px;">
+                                <?php $_params = $_helper->parseCmd($_task->getData('cmd'), true); ?>
+                                <?php foreach ($_params as $_key=>$_val): ?>
+                                <p><?php echo $_key?>: <?php echo $_val; ?></p>
+                                <?php endforeach; ?>
+                            </td>
                             <td><?php echo $_helper->getStatusText($_task->getData('status')); ?></td>
-                            <td><?php echo $_task->getData('pid');?></td>
+                            <!-- <td><?php echo $_task->getData('pid');?></td> -->
                             <td><?php echo $_task->getData('log');?></td>
                         </tr>
                         <?php endforeach; ?>
